@@ -11,7 +11,7 @@ contract MyContract {
         uint256 amountCollected;
         string image;
         address[] donators;
-        uint256 donations;
+        uint256[] donations;
     }
 
     mapping(uint256 => Campaign) public campaigns;
@@ -48,10 +48,10 @@ contract MyContract {
 
         Campaign storage campaign = campaigns[_id];
 
-        campaign.donators.push(meg.sender);
+        campaign.donators.push(msg.sender);
         campaign.donations.push(amount);
 
-        bool sent = payable(campaign.owner).call{value: amount}("");
+        (bool sent, ) = payable(campaign.owner).call{value: amount}("");
 
         if (sent) {
             campaign.amountCollected = campaign.amountCollected + amount;
