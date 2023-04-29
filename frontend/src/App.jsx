@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Home, Profile, CampaignDetails, CreateCampaign } from "./pages";
+import { Home, Profile } from "./pages";
 import { Sidebar, Navbar } from "./components";
 
 function App() {
